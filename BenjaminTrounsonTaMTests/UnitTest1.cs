@@ -146,5 +146,23 @@ namespace BenjaminTrounsonTaMTests
             expectedNames.Add("level 3");
             CollectionAssert.AreEqual(expectedNames, actualNames);
         }
+        [TestMethod, TestCategory("3levels")]
+        public void GameWithThreeLevelsCanChangeCurrentLevel()
+        {
+            MakeGameWithThreeLevels();
+            string expectedName = "level 2";
+            game.SetLevel("level 2");
+            string actualName = game.CurrentLevelName;
+            Assert.AreEqual(expectedName, actualName);
+        }
+        [TestMethod, TestCategory("3levels")]
+        public void GameWithThreeLevelsDoesNotChangeCurrentLevelIfNameInvalid()
+        {
+            MakeGameWithThreeLevels();
+            string expectedName = "level 3";
+            game.SetLevel("level 666");
+            string actualName = game.CurrentLevelName;
+            Assert.AreSame(expectedName, actualName);
+        }
     }
 }

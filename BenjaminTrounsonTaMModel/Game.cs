@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Linq;
 
 namespace BenjaminTrounsonTaMModel
 {
@@ -14,18 +15,34 @@ namespace BenjaminTrounsonTaMModel
         public int LevelCount { get; set; } = 0;
         public string CurrentLevelName { get; set; } = "No levels loaded";
         enum Moves { UP, DOWN, RIGHT, LEFT, PAUSE };
-        public List<string> LevelNames() 
+        public List<string> LevelNames()
         {
             return Levels;
         }
-        public void AddLevel(string LevelName, int Width, int Height, string Data) 
+        public void AddLevel(string LevelName, int Width, int Height, string Data)
         {
             Levels.Add(LevelName);
             LevelWidth = Width;
             LevelHeight = Height;
             LevelData.Add(Data);
-            LevelCount ++;
+            LevelCount++;
             CurrentLevelName = LevelName;
+        }
+
+        public void SetLevel(string LevelName)
+        {
+            foreach (string Level in Levels)
+            {
+                if (Level == LevelName)
+                {
+                    CurrentLevelName = LevelName;
+                    Console.WriteLine(CurrentLevelName);
+                }
+                else
+                {
+                    CurrentLevelName = Levels[Levels.Count - 2];
+                }
+            }
         }
 
         public void MoveMinotaur()
