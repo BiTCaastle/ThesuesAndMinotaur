@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using BenjaminTrounsonTaMModel;
 
 namespace BenjaminTrounsonTaMView
 {
@@ -15,6 +16,11 @@ namespace BenjaminTrounsonTaMView
         public Form1()
         {
             InitializeComponent();
+        }
+
+        private void LevelDraw()
+        {
+            
         }
     }
 }

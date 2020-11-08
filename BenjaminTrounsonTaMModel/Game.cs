@@ -7,14 +7,19 @@ namespace BenjaminTrounsonTaMModel
 {
     public class Game : IGame
     {
-        public List<string> Levels = new List<string> { };
+        public List<string> Levels = new List<string>();
         List<string> LevelData = new List<string>();
-        public int LevelWidth { get; set; } = 0;
-        public int LevelHeight { get; set; } = 0;
-        int MoveCount { get; set; } = 0;
-        public int LevelCount { get; set; } = 0;
+        public int LevelWidth { get; set; }
+        public int LevelHeight { get; set; }
+        public int MoveCount { get; set; }
+        public int LevelCount { get; set; }
+        int TheseusRow { get; set; }
+        int TheseusColumn { get; set; }
+        int MinotaurRow { get; set; }
+        int MinotaurColumn { get; set; }
         public string CurrentLevelName { get; set; } = "No levels loaded";
-        enum Moves { UP, DOWN, RIGHT, LEFT, PAUSE };
+        public enum Moves { UP, DOWN, RIGHT, LEFT, PAUSE };
+        public Square[,] level;
         public List<string> LevelNames()
         {
             return Levels;
@@ -27,37 +32,57 @@ namespace BenjaminTrounsonTaMModel
             LevelData.Add(Data);
             LevelCount++;
             CurrentLevelName = LevelName;
+            Level Level = new Level(LevelName, Width, Height, Data);
+            //CurrentLevel = Level;
         }
 
-        public void SetLevel(string LevelName)
+        public void SetLevel(string name)
         {
             foreach (string Level in Levels)
             {
-                if (Level == LevelName)
+                if (Level == name)
                 {
-                    CurrentLevelName = LevelName;
-                    Console.WriteLine(CurrentLevelName);
-                }
-                else
-                {
-                    CurrentLevelName = Levels[Levels.Count - 2];
+                    CurrentLevelName = name;
                 }
             }
         }
 
         public void MoveMinotaur()
         { 
-            
+           
         }
 
-        public void MoveTheseus()
-        { 
-            
-        }
-
-        public void WhatIsAt(int row, int column)
+        public void MoveTheseus(Moves moves)
         {
+            if (moves == Moves.UP)
+            {
+                TheseusRow++;
+                MoveCount++;
+            }
+            if (moves == Moves.DOWN)
+            {
+                TheseusRow--;
+                MoveCount++;
+            }
+            if (moves == Moves.LEFT)
+            {
+                TheseusColumn--;
+                MoveCount++;
+            }
+            if (moves == Moves.RIGHT)
+            {
+                TheseusColumn++;
+                MoveCount++;
+            }
+            if (moves == Moves.PAUSE)
+            {
 
+            }
         }
+
+        //public Square WhatIsAt(int row, int column)
+        //{
+        //    
+        //}
     }
 }

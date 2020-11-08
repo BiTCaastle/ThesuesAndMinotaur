@@ -6,9 +6,9 @@ namespace BenjaminTrounsonTaMModel
 {
     interface IGame
     {
-        void WhatIsAt(int row, int column);
+        
+        //void WhatIsAt(int row, int column);
         void AddLevel(string CurrentLevelName, int LevelWidth, int LevelHeight, string LevelData);
         void MoveMinotaur();
-        void MoveTheseus();
     }
 }
