@@ -7,20 +7,23 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using BenjaminTrounsonTaMModel;
 
 namespace BenjaminTrounsonTaMView
 {
-    public partial class Form1 : Form
+    public partial class MainMenu : Form
     {
-        public Form1()
+        Controller controller = new Controller();
+
+        public MainMenu()
         {
             InitializeComponent();
         }
 
-        private void LevelDraw()
+        private void button1_Click(object sender, EventArgs e)
         {
-            
+            Level1 Level1 = new Level1();
+            Level1.Show();
+            this.Hide();
         }
     }
 }
